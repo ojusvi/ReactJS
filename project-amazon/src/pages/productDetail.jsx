@@ -9,15 +9,38 @@ export default function ProductDetails() {
     const { id } = useParams()
     console.log('ID:', id);
     const [products, setProducts] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     const fetchproducts = async () => {
+      try{
         const res = await axios.get(`${BASE_URL}/product/${id}`)
         setProducts(res.data)
+      } 
+      catch(error) {
+        setError(error.message)
+      }
+      finally{
+        setLoading(false)
+      }
     }
+
+    // const fetchproducts = async () => {
+    //     const res = await axios.get(`${BASE_URL}/product/${id}`)
+    //     setProducts(res.data)
+    // }
 
     useEffect(() => {
       fetchproducts();
     }, [id])
+
+    if(loading) {
+      return <div className="text-center mt-4">Loading...</div>
+    }
+
+    if(error) {
+      return <div className="text-center mt-4 text-red-500">{error}</div>
+    }
 
     return (
       <section className="py-12 sm:py-16"> 
@@ -43,7 +66,7 @@ export default function ProductDetails() {
               <div className="flex items-center">
                 <span className="mx-2 text-gray-400">/</span>
                 <div className="-m-1">
-                  <Link to="#" className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800" aria-current="page"> {products?.brand} </Link>
+                  <Link to="#" className="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800" aria-current="page"> {products.brand} </Link>
                 </div>
               </div>
             </li>
@@ -55,14 +78,14 @@ export default function ProductDetails() {
             <div className="lg:flex lg:items-start">
               <div className="lg:order-2 lg:ml-5">
                 <div className="max-w-xl overflow-hidden rounded-lg">
-                  <img className="h-full w-full max-w-full object-cover" src={products?.thumbnail} alt="" />
+                  <img className="h-full w-full max-w-full object-cover" src={products.thumbnail} alt="" />
                 </div>
               </div>
     
               {/* <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
                 <div className="flex flex-row items-start lg:flex-col">
                   <button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                    <img className="h-full w-full object-cover" src={products?.images} alt="" />
+                    <img className="h-full w-full object-cover" src={products.images} alt="" />
                   </button>
                   <button type="button" className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
                     <img className="h-full w-full object-cover" src="/images/JHxMnVrtPMdcNU1s_7g7f.png" alt="" />
@@ -76,7 +99,7 @@ export default function ProductDetails() {
           </div>
     
           <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-            <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{products?.title}</h1>
+            <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{products.title}</h1>
     
             <h2 className="mt-8 text-base text-gray-900">Color Type</h2>
             <div className="mt-3 flex select-none flex-wrap items-center gap-1">
@@ -115,7 +138,7 @@ export default function ProductDetails() {
     
             <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
               <div className="flex items-end">
-                <h1 className="text-3xl font-bold">${products?.price}</h1>
+                <h1 className="text-3xl font-bold">${products.price}</h1>
                 {/* <span className="text-base">/month</span> */}
               </div>
     
@@ -151,7 +174,7 @@ export default function ProductDetails() {
               <h1 className="text-3xl font-bold">Delivered To Your Door</h1>
               <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusantium nesciunt fuga.</p>
               <h1 className="mt-8 text-3xl font-bold">Description</h1>
-              <p className="mt-4">{products?.description}</p>
+              <p className="mt-4">{products.description}</p>
             </div>
           </div>
         </div>
