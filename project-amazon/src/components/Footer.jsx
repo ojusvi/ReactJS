@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 function Footer() {
   return (
     <footer>
-        <div className='bg-a-d-gray text-primary'>
+        <div className='bg-adgray text-white'>
             <div className='padding-x py-5 justify-center items-center flex'>
                 <Link to="/">
                     <img 
@@ -17,7 +17,7 @@ function Footer() {
                 </Link>
             </div>
 
-            <ul className='flex flex-1 justify-center items-center gap-16 mb-4'>
+            <ul className='flex flex-1 justify-center items-center gap-16 mb-4 max-sm:hidden'>
                 {navLinks.map((item) => (
                     <li key={item.label}>
                         <Link to={item.href} className='font-montserrat leading-normal px-2 text-xs'>
@@ -27,7 +27,7 @@ function Footer() {
                 ))}
             </ul>
 
-            <div className='bg-a-black items-center justify-center flex flex-1 py-1 text-xs'>
+            <div className='bg-ablack items-center justify-center flex flex-1 py-1 text-xs'>
                 <span>© 1996-2024, Amazon.com, Inc. or its affiliates</span>
             </div>
         </div>

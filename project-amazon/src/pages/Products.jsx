@@ -39,7 +39,7 @@ const Products = () => {
     }
 
     return(
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 mx-auto">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 mx-auto">
             {products.map((item, key) => (
                 <ProductCard key={key} product={item} />
             ))}
