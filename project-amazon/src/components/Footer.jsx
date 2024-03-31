@@ -1,6 +1,6 @@
 import React from 'react'
 import { amazon } from '../assets/images'
-import { navLinks } from '../constants'
+import { footLinks } from '../constants'
 import { Link } from 'react-router-dom'
 
 function Footer() {
@@ -18,7 +18,7 @@ function Footer() {
             </div>
 
             <ul className='flex flex-1 justify-center items-center gap-16 mb-4 max-sm:hidden'>
-                {navLinks.map((item) => (
+                {footLinks.map((item) => (
                     <li key={item.label}>
                         <Link to={item.href} className='font-montserrat leading-normal px-2 text-xs'>
                             {item.label}

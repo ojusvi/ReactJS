@@ -9,7 +9,7 @@ function Nav() {
   return (
     <>
     <header className='padding-x py-3 w-full bg-adgray text-white'>
-        <nav className='flex max-container'>
+        <nav className='flex justify-center items-center max-container'>
             <Link to="/" className='mt-3'>
                 <img 
                     src={ amazon } 
@@ -19,7 +19,7 @@ function Nav() {
                     className='px-2 ml-5'
                 />
             </Link>
-            <div className='ml-5 w-[40%] max-sm:w-[50%]'>
+            <div className='mx-auto w-[40%] max-sm:w-[50%]'>
                 <InputDemo></InputDemo>
             </div>
         </nav>
