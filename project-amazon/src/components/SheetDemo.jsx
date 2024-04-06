@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../components/ui/sheet"
+import { Link } from 'react-router-dom'
 
 export function SheetDemo() {
   return (
@@ -34,7 +35,11 @@ export function SheetDemo() {
         </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit" className="flex-1">Sign in / Sign up</Button>
+          <Button type="submit" className="flex-1">
+            <Link to={`signin`}>
+              Sign in / Sign up
+            </Link>
+          </Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

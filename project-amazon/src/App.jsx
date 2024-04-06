@@ -6,6 +6,7 @@ import Layout from './pages/Layout'
 import ProductCard from './components/ProductCard';
 import Products from './pages/Products'
 import ProductDetails from './pages/productDetail';
+import { SignIn } from './pages/signIn';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route index element={<Products />} />
           <Route path="productDetail/:id" element={<ProductDetails />} />
         </Route>
+        <Route path='signin' element={<SignIn />} />
       </Routes>
       </BrowserRouter>
     </div>
