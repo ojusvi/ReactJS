@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Bamazon } from '../assets/images'
 
 export function SignIn() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const handleSignIn = () => {
+    console.log("Email: ", email)
+    console.log("Password: ", password)
+  }
+
   return (
     <section className="">
       <div className="">
@@ -34,6 +50,7 @@ export function SignIn() {
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
+                      onChange={handleEmailChange}
                     ></input>
                   </div>
                 </div>
@@ -58,6 +75,7 @@ export function SignIn() {
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
+                      onChange={handlePasswordChange}
                     ></input>
                   </div>
                 </div>
@@ -65,6 +83,7 @@ export function SignIn() {
                   <button
                     type="button"
                     className="inline-flex w-full items-center justify-center rounded-lg bg-amber-400 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-amber-400/80"
+                    onClick={handleSignIn}
                   >
                     Sign in
                   </button>
