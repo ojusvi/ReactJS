@@ -1,34 +1,48 @@
-import React, { useState } from 'react'
-import { Bamazon } from '../assets/images'
+import React, { useState } from "react";
+import { Bamazon } from "../assets/images";
 
 export function SignIn() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  //Adding Email Error State
+  const [emailError, setEmailError] = useState(null);
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
+    if (e.target.value === "") {
+      setEmailError("Email is required");
+    } else {
+      setEmailError(null);
+      setEmail(e.target.value);
+    }
+  };
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
 
   const handleSignIn = () => {
-    console.log("Email: ", email)
-    console.log("Password: ", password)
-  }
+    if (email === "") {
+      setEmailError("Email is required");
+      return;
+    }
+
+    console.log(email, password);
+  };
 
   return (
     <section className="">
       <div className="">
-        <div className='flex items-center justify-center py-10'>
-            <img src={Bamazon} alt="" width={130} height={130}/>
+        <div className="flex items-center justify-center py-10">
+          <img src={Bamazon} alt="" width={130} height={130} />
         </div>
         <div className="flex justify-center items-center mx-auto">
           <div className="">
-            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign in</h2>
+            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
+              Sign in
+            </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Don&apos;t have an account?{' '}
+              Don&apos;t have an account?{" "}
               <a
                 href="#"
                 title=""
@@ -40,9 +54,12 @@ export function SignIn() {
             <form action="#" method="POST" className="mt-8">
               <div className="space-y-5">
                 <div>
-                  <label htmlFor="email" className="text-base font-medium text-gray-900">
-                    {' '}
-                    Email address{' '}
+                  <label
+                    htmlFor="email"
+                    className="text-base font-medium text-gray-900"
+                  >
+                    {" "}
+                    Email address{" "}
                   </label>
                   <div className="mt-2">
                     <input
@@ -52,21 +69,36 @@ export function SignIn() {
                       placeholder="Email"
                       onChange={handleEmailChange}
                     ></input>
+
+                    {/* Email Error */}
+
+                    {/* 
+                    if the email is not valid, display an error
+                    */}
+
+                    {emailError && (
+                      <p className="text-red-500 text-sm mt-2 ">{emailError}</p>
+                    )}
+
+                    {/* Email Error */}
                   </div>
                 </div>
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="password" className="text-base font-medium text-gray-900">
-                      {' '}
-                      Password{' '}
+                    <label
+                      htmlFor="password"
+                      className="text-base font-medium text-gray-900"
+                    >
+                      {" "}
+                      Password{" "}
                     </label>
                     <a
                       href="#"
                       title=""
                       className="text-sm font-semibold text-black hover:underline"
                     >
-                      {' '}
-                      Forgot password?{' '}
+                      {" "}
+                      Forgot password?{" "}
                     </a>
                   </div>
                   <div className="mt-2">
@@ -128,5 +160,5 @@ export function SignIn() {
         </div>
       </div>
     </section>
-  )
+  );
 }
