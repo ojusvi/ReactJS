@@ -7,6 +7,7 @@ export function SignIn() {
 
   //Adding Email Error State
   const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null)
 
   const handleEmailChange = (e) => {
     if (e.target.value === "") {
@@ -18,12 +19,28 @@ export function SignIn() {
   };
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+    if(e.target.value === "") {
+      setPasswordError("Password is Required")
+    }
+    else{
+      setPasswordError(null)
+      setPassword(e.target.value)
+    }
   };
 
   const handleSignIn = () => {
     if (email === "") {
       setEmailError("Email is required");
+      return;
+    }
+
+    if(password === ""){
+      setPasswordError("Password Is Required")
+      return;
+    }
+
+    if(password.length < 8){
+      setPasswordError("Password Must Be 8 Characters Long")
       return;
     }
 
@@ -109,6 +126,9 @@ export function SignIn() {
                       placeholder="Password"
                       onChange={handlePasswordChange}
                     ></input>
+                    {passwordError && (
+                      <p className="text-red-500 text-sm mt-2 ">{passwordError}</p>
+                    )}
                   </div>
                 </div>
                 <div>
