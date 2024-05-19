@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "brand": "Apple",
+    "price": "1099",
+    "rating": "4.12",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+    "discountPercentage": "14.99"
+  },
+  {
+    "id": 2,
+    "brand": "Samsung",
+    "price": "899",
+    "rating": "4.69",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+    "discountPercentage": "14.99"
+  },
+  {
+    "id": 3,
+    "brand": "OPPO",
+    "price": "699",
+    "rating": "4.25",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+    "discountPercentage": "20.00"
+  },
+  {
+    "id": 4,
+    "brand": "Xiaomi",
+    "price": "499",
+    "rating": "4.18",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+    "discountPercentage": "12.50"
+  },
+  {
+    "id": 5,
+    "brand": "OnePlus",
+    "price": "899",
+    "rating": "4.55",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.jpg",
+    "discountPercentage": "10.00"
+  },
+  {
+    "id": 6,
+    "brand": "Huawei",
+    "price": "799",
+    "rating": "4.31",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+    "discountPercentage": "15.00"
+  },
+  {
+    "id": 7,
+    "brand": "Google",
+    "price": "1199",
+    "rating": "4.63",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+    "discountPercentage": "10.00"
+  },
+  {
+    "id": 8,
+    "brand": "Sony",
+    "price": "999",
+    "rating": "4.48",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+    "discountPercentage": "18.00"
+  },
+  {
+    "id": 9,
+    "brand": "Lenovo",
+    "price": "599",
+    "rating": "4.16",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpg",
+    "discountPercentage": "10.00"
+  },
+  {
+    "id": 10,
+    "brand": "Dell",
+    "price": "1299",
+    "rating": "4.27",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg",
+    "discountPercentage": "12.50"
+  },
+  {
+    "id": 11,
+    "brand": "Asus",
+    "price": "899",
+    "rating": "4.14",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg",
+    "discountPercentage": "15.00"
+  },
+  {
+    "id": 12,
+    "brand": "Acer",
+    "price": "599",
+    "rating": "4.09",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.jpg",
+    "discountPercentage": "18.00"
+  },
+  {
+    "id": 13,
+    "brand": "MSI",
+    "price": "1299",
+    "rating": "4.37",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg",
+    "discountPercentage": "10.00"
+  },
+  {
+    "id": 14,
+    "brand": "HP",
+    "price": "799",
+    "rating": "4.12",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg",
+    "discountPercentage": "14.99"
+  },
+  {
+    "id": 15,
+    "brand": "Intel",
+    "price": "1299",
+    "rating": "4.65",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/16/thumbnail.jpg",
+    "discountPercentage": "10.00"
+  },
+  {
+    "id": 16,
+    "brand": "AMD",
+    "price": "999",
+    "rating": "4.49",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/17/thumbnail.jpg",
+    "discountPercentage": "18.00"
+  },
+  {
+    "id": 17,
+    "brand": "NVIDIA",
+    "price": "1299",
+    "rating": "4.33",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg",
+    "discountPercentage": "12.50"
+  },
+  {
+    "id": 18,
+    "brand": "AMD Radeon",
+    "price": "899",
+    "rating": "4.19",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/19/thumbnail.jpg",
+    "discountPercentage": "15.00"
+  },
+  {
+    "id": 19,
+    "brand": "Corsair",
+    "price": "699",
+    "rating": "4.15",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/20/thumbnail.jpg",
+    "discountPercentage": "20.00"
+  },
+  {
+    "id": 20,
+    "brand": "Razer",
+    "price": "1299",
+    "rating": "4.28",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/21/thumbnail.jpg",
+    "discountPercentage": "10.00"
+  }
+]

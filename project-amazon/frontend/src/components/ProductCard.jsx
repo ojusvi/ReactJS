@@ -1,11 +1,22 @@
-import React from "react";
-import { amazon } from "../assets/images";
+/* eslint-disable react/prop-types */
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
+  const deleteProduct = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/products/${id}`);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   return (
-    <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-      <Link to="/" className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
+    <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md bottom-[380px] max-sm:bottom-0 max-md:bottom-0">
+      <Link
+        to="/"
+        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
       >
         <img
           className="object-cover"
@@ -36,10 +47,20 @@ function ProductCard({ product }) {
             </span>
           </div>
         </div>
-        <Link to={`productDetail/${product.id}`}
-          className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
-            Shop Now
+        <Link
+          to={`productDetail/${product.id}`}
+          className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+        >
+          Shop Now
         </Link>
+        <span
+          onClick={() => {
+            deleteProduct(product.id);
+          }}
+          className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+        >
+          Delete
+        </span>
       </div>
     </div>
   );
