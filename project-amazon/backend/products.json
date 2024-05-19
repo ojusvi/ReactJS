@@ -36,7 +36,7 @@
     "brand": "OnePlus",
     "price": "899",
     "rating": "4.55",
-    "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.jpg",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
     "discountPercentage": "10.00"
   },
   {
@@ -68,7 +68,7 @@
     "brand": "Lenovo",
     "price": "599",
     "rating": "4.16",
-    "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpg",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
     "discountPercentage": "10.00"
   },
   {
@@ -92,7 +92,7 @@
     "brand": "Acer",
     "price": "599",
     "rating": "4.09",
-    "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.jpg",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
     "discountPercentage": "18.00"
   },
   {
@@ -156,7 +156,7 @@
     "brand": "Razer",
     "price": "1299",
     "rating": "4.28",
-    "thumbnail": "https://cdn.dummyjson.com/product-images/21/thumbnail.jpg",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg",
     "discountPercentage": "10.00"
   }
 ]
