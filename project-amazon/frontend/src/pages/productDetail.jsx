@@ -119,7 +119,7 @@ export default function ProductDetails() {
 
           <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
             <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">
-              {products.title}
+              {products.brand}
             </h1>
 
             <h2 className="mt-8 text-base text-gray-900">Color Type</h2>
@@ -210,12 +210,6 @@ export default function ProductDetails() {
                 className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-6 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
               >
                 Add to cart
-              </button>
-              <button
-                type="button"
-                className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-6 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
-              >
-                Del
               </button>
             </div>
 
