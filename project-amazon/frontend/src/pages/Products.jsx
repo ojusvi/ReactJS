@@ -63,7 +63,7 @@ const Products = () => {
   }
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full -mb-64">
       <div>
         <Carousel pause="false">
           {[banner1, banner2, banner3, banner4, banner5, banner6].map(

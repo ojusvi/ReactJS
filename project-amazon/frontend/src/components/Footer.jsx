@@ -2,7 +2,7 @@ import { amazon } from "../assets/images";
 
 const Footer = () => {
   return (
-    <footer className="bg-adgray relative bottom-0 -mt-60 ">
+    <footer className="bg-adgray relative">
       <section className="relative overflow-hidden py-10">
         <div className="relative z-10 mx-auto max-w-7xl px-4">
           <div className="-m-6 flex flex-wrap">

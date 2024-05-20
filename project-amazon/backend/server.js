@@ -30,10 +30,21 @@ const writeProducts = (products) => {
     fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
 };
 
-// Route to get all products
-app.get('/products', (req, res) => {
+// Route to get all products or a specific product by id
+app.get('/products/:id?', (req, res) => {
+    const { id } = req.params;
     const products = readProducts();
-    res.json(products);
+    
+    if (id) {
+        const product = products.find(product => product.id === parseInt(id, 10));
+        if (product) {
+            res.json(product);
+        } else {
+            res.status(404).json({ message: 'Product not found' });
+        }
+    } else {
+        res.json(products);
+    }
 });
 
 // Route to add a new product

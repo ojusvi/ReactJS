@@ -4,6 +4,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 // import ProductCard from './components/ProductCard';
+import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/productDetail";
 import { SignIn } from "./pages/signIn";
@@ -18,6 +19,7 @@ function App() {
             <Route path="productDetail/:id" element={<ProductDetails />} />
           </Route>
           <Route path="signin" element={<SignIn />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

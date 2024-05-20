@@ -29,6 +29,7 @@ module.exports = {
         white400: "rgba(255, 255, 255, 0.80)",
         ablack: "#000000",
         adgray: "#232f3e",
+        dashblue: "#070f2b",
         acharcol: "#37475A",
         foreground: "hsl(var(--foreground))",
         primary: {

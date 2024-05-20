@@ -20,3 +20,8 @@ export const footLinks = [
     { href: "#privacy", label: "Privacy" },
     { href: "#contact-us", label: "Contact Us" },
 ]
+
+export const dashLinks = [
+    { href: "#dashboard", label: "Dashboard" },
+    { href: "#ticket", label: "Support Tickets" },
+]

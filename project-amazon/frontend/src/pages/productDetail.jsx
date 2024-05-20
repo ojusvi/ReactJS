@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { BASE_URL } from "../config/baseURL";
 // import { useSearchParams } from "react-router-dom";
 
 export default function ProductDetails() {
@@ -13,7 +12,7 @@ export default function ProductDetails() {
 
   const fetchProducts = useCallback(async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/product/${id}`);
+      const res = await axios.get(`http://localhost:3000/products/${id}`);
       setProducts(res.data);
     } catch (error) {
       setError(error.message);
