@@ -1,4 +1,30 @@
 // src/components/Dashboard.jsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
@@ -18,7 +44,9 @@ const Dashboard = () => {
     thumbnail: "",
     discountPercentage: "",
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [productIdToDelete, setProductIdToDelete] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -47,7 +75,7 @@ const Dashboard = () => {
         thumbnail: "",
         discountPercentage: "",
       });
-      setIsModalOpen(false);
+      setIsDialogOpen(false);
     } catch (error) {
       console.error("Error adding product:", error);
     }
@@ -134,7 +162,7 @@ const Dashboard = () => {
         <h2 className="text-xl mb-2">Add New Product</h2>
         <button
           className="bg-blue-500 text-white p-2"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setIsDialogOpen(true)}
         >
           Add
         </button>
@@ -143,116 +171,157 @@ const Dashboard = () => {
       <div className="container mb-6">
         <h2 className="text-xl mb-2">Products</h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-200">
-            <thead>
-              <tr>
-                <th className="border p-2">ID</th>
-                <th className="border p-2">Brand</th>
-                <th className="border p-2">Price</th>
-                <th className="border p-2">Rating</th>
-                <th className="border p-2">Thumbnail</th>
-                <th className="border p-2">Discount</th>
-                <th className="border p-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+          <Table>
+            <TableCaption>A list of your products.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">ID</TableHead>
+                <TableHead>Brand</TableHead>
+                <TableHead>Price</TableHead>
+                <TableHead>Rating</TableHead>
+                <TableHead>Thumbnail</TableHead>
+                <TableHead>Discount</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {products.map((product) => (
-                <tr key={product.id}>
-                  <td className="border p-2">{product.id}</td>
-                  <td className="border p-2">{product.brand}</td>
-                  <td className="border p-2">{product.price}</td>
-                  <td className="border p-2">{product.rating}</td>
-                  <td className="border p-2">
+                <TableRow key={product.id}>
+                  <TableCell className="font-medium">{product.id}</TableCell>
+                  <TableCell>{product.brand}</TableCell>
+                  <TableCell>{product.price}</TableCell>
+                  <TableCell>{product.rating}</TableCell>
+                  <TableCell>
                     <img
                       src={product.thumbnail}
                       alt={product.brand}
                       className="w-16"
                     />
-                  </td>
-                  <td className="border p-2">{product.discountPercentage}%</td>
-                  <td className="border p-2">
+                  </TableCell>
+                  <TableCell>{product.discountPercentage}%</TableCell>
+                  <TableCell>
                     <button
                       className="bg-red-500 text-white p-2"
-                      onClick={() => handleDeleteProduct(product.id)}
+                      onClick={() => {
+                        setProductIdToDelete(product.id);
+                        setIsAlertOpen(true);
+                      }}
                     >
                       Delete
                     </button>
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        contentLabel="Add New Product"
-        className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mx-auto mt-20"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-      >
-        <h2 className="text-xl mb-4">Add New Product</h2>
-        <input
-          type="text"
-          className="border p-2 mb-2 w-full"
-          value={newProduct.brand}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, brand: e.target.value })
-          }
-          placeholder="Brand"
-        />
-        <input
-          type="number"
-          className="border p-2 mb-2 w-full"
-          value={newProduct.price}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, price: e.target.value })
-          }
-          placeholder="Price"
-        />
-        <input
-          type="number"
-          className="border p-2 mb-2 w-full"
-          value={newProduct.rating}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, rating: e.target.value })
-          }
-          placeholder="Rating"
-        />
-        <input
-          type="text"
-          className="border p-2 mb-2 w-full"
-          value={newProduct.thumbnail}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, thumbnail: e.target.value })
-          }
-          placeholder="Thumbnail URL"
-        />
-        <input
-          type="number"
-          className="border p-2 mb-2 w-full"
-          value={newProduct.discountPercentage}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, discountPercentage: e.target.value })
-          }
-          placeholder="Discount Percentage"
-        />
-        <div className="flex justify-end">
-          <button
-            className="bg-red-500 text-white p-2 mr-2"
-            onClick={() => setIsModalOpen(false)}
-          >
-            Cancel
-          </button>
-          <button
-            className="bg-blue-500 text-white p-2"
-            onClick={handleAddProduct}
-          >
-            Add Product
-          </button>
-        </div>
-      </Modal>
+      <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the
+              product.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel
+              onClick={() => {
+                setIsAlertOpen(false);
+                setProductIdToDelete(null);
+              }}
+            >
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                handleDeleteProduct(productIdToDelete);
+                setIsAlertOpen(false);
+                setProductIdToDelete(null);
+              }}
+            >
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent
+          className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mx-auto mt-20"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+        >
+          <DialogHeader>
+            <DialogTitle className="text-xl mb-4">Add New Product</DialogTitle>
+            <DialogDescription>
+              <input
+                type="text"
+                className="border p-2 mb-2 w-full"
+                value={newProduct.brand}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, brand: e.target.value })
+                }
+                placeholder="Brand"
+              />
+              <input
+                type="number"
+                className="border p-2 mb-2 w-full"
+                value={newProduct.price}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, price: e.target.value })
+                }
+                placeholder="Price"
+              />
+              <input
+                type="number"
+                className="border p-2 mb-2 w-full"
+                value={newProduct.rating}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, rating: e.target.value })
+                }
+                placeholder="Rating"
+              />
+              <input
+                type="text"
+                className="border p-2 mb-2 w-full"
+                value={newProduct.thumbnail}
+                onChange={(e) =>
+                  setNewProduct({ ...newProduct, thumbnail: e.target.value })
+                }
+                placeholder="Thumbnail URL"
+              />
+              <input
+                type="number"
+                className="border p-2 mb-2 w-full"
+                value={newProduct.discountPercentage}
+                onChange={(e) =>
+                  setNewProduct({
+                    ...newProduct,
+                    discountPercentage: e.target.value,
+                  })
+                }
+                placeholder="Discount Percentage"
+              />
+              <div className="flex justify-end">
+                <button
+                  className="bg-red-500 text-white p-2 mr-2"
+                  onClick={() => setIsDialogOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="bg-blue-500 text-white p-2"
+                  onClick={handleAddProduct}
+                >
+                  Add Product
+                </button>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
