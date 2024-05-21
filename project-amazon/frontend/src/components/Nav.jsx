@@ -26,10 +26,12 @@ function Nav() {
             className="ml-20 mt-3.5 max-sm:hidden"
           />
 
-          <div className="ml-3 text-sm max-sm:hidden">
-            Hello User, <br />
-            <span className="font-bold">Select Your Address</span>
-          </div>
+          <Link to="">
+            <div className="ml-3 text-sm max-sm:hidden">
+              Hello User, <br />
+              <span className="font-bold">Select Your Address</span>
+            </div>
+          </Link>
           <div className="mx-16 w-[50%] max-sm:w-[50%]">
             <InputDemo></InputDemo>
           </div>
@@ -48,11 +50,13 @@ function Nav() {
             <span className="font-bold text-sm">Account & Lists</span>
           </div>
 
-          <div className="ml-10 text-xs max-sm:hidden">
-            Returns
-            <br />
-            <span className="font-bold text-sm">& Orders</span>
-          </div>
+          <Link to="">
+            <div className="ml-10 text-xs max-sm:hidden">
+              Returns
+              <br />
+              <span className="font-bold text-sm">& Orders</span>
+            </div>
+          </Link>
         </nav>
       </header>
       <div className="bg-acharcol text-white py-2 font-bold">

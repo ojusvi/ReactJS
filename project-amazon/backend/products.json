@@ -150,13 +150,5 @@
     "rating": "4.15",
     "thumbnail": "https://cdn.dummyjson.com/product-images/20/thumbnail.jpg",
     "discountPercentage": "20.00"
-  },
-  {
-    "id": 20,
-    "brand": "Razer",
-    "price": "1299",
-    "rating": "4.28",
-    "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg",
-    "discountPercentage": "10.00"
   }
 ]
