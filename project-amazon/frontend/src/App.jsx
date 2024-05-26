@@ -4,10 +4,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 // import ProductCard from './components/ProductCard';
+import { Toaster } from "sonner";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/productDetail";
 import { SignIn } from "./pages/signIn";
+import { SignUp } from "./pages/signup";
 
 function App() {
   return (
@@ -19,9 +21,11 @@ function App() {
             <Route path="productDetail/:id" element={<ProductDetails />} />
           </Route>
           <Route path="signin" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   );
 }
