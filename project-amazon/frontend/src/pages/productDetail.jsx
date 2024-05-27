@@ -12,7 +12,7 @@ export default function ProductDetails() {
 
   const fetchProducts = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/products/${id}`);
+      const res = await axios.get(`http://localhost:5000/products/${id}`);
       setProducts(res.data);
     } catch (error) {
       setError(error.message);

@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/products"); // Replace with your API endpoint
+      const response = await axios.get("http://localhost:5000/products"); // Replace with your API endpoint
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -64,7 +64,7 @@ const Dashboard = () => {
   const handleAddProduct = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/products",
+        "http://localhost:5000/products",
         newProduct
       ); // Replace with your API endpoint
       setProducts([...products, response.data]);
@@ -83,7 +83,7 @@ const Dashboard = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/products/${id}`); // Replace with your API endpoint
+      await axios.delete(`http://localhost:5000/products/${id}`); // Replace with your API endpoint
       setProducts(products.filter((product) => product.id !== id));
     } catch (error) {
       console.error("Error deleting product:", error);
