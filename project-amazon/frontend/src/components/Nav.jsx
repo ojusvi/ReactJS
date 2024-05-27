@@ -28,7 +28,11 @@ function Nav() {
 
           <Link to="">
             <div className="ml-3 text-sm max-sm:hidden">
-              Hello User, <br />
+              Hello{" "}
+              {localStorage.getItem("username")
+                ? localStorage.getItem("username")
+                : "user"}{" "}
+              <br />
               <span className="font-bold">Select Your Address</span>
             </div>
           </Link>
@@ -46,7 +50,11 @@ function Nav() {
           <span className="mx-5 max-sm:hidden">EN</span>
 
           <div className="text-xs max-sm:hidden">
-            Hello, Sign In <br />
+            Hello,{" "}
+            {localStorage.getItem("username")
+              ? localStorage.getItem("username")
+              : "user"}{" "}
+            <br />
             <span className="font-bold text-sm">Account & Lists</span>
           </div>
 

@@ -17,32 +17,10 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // const fetchproducts = async () => {
-  //     try{
-  //         const res = await axios.get("/api/products")
-  //         setProducts(res.data)
-  //     }
-  //     catch(error) {
-  //         setError(error.message)
-  //     }
-  //     finally {
-  //         setLoading(false)
-  //     }
-  // }
-
-  // // const fetchproducts = async () => {
-  // //     const res = await axios.get(BASE_URL + "/products")
-  // //     setProducts(res.data.products)
-  // // }
-
-  // useEffect(() => {
-  //     fetchproducts();
-  // }, [])
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/products");
+        const response = await axios.get("http://localhost:5000/products");
         setProducts(response.data);
         setLoading(false);
       } catch (err) {
