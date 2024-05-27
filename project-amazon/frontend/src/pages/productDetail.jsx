@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import useCartStore from "../../store/cartStore";
 // import { useSearchParams } from "react-router-dom";
 
 export default function ProductDetails() {
@@ -9,6 +10,8 @@ export default function ProductDetails() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const addProduct = useCartStore((state) => state.addProduct);
 
   const fetchProducts = useCallback(async () => {
     try {
@@ -206,6 +209,7 @@ export default function ProductDetails() {
               </div>
 
               <button
+                onClick={() => addProduct(products)}
                 type="button"
                 className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-6 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
               >
