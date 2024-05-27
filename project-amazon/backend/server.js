@@ -6,6 +6,7 @@ import fs from "fs";
 import mongoose from "mongoose";
 import path from "path";
 import { fileURLToPath } from "url";
+import { data } from "./mutilproducts.js";
 import userRoutes from "./routes/userRoutes.js";
 
 // Load environment variables
@@ -42,10 +43,17 @@ const readProducts = () => {
   return JSON.parse(data);
 };
 
+// Function to read multiple products from the JSON file
+
 // Function to write products to the JSON file
 const writeProducts = (products) => {
   fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
 };
+
+app.get("/multiProducts", (req, res) => {
+  const products = data;
+  res.json(products);
+});
 
 // Route to get all products or a specific product by id
 app.get("/products/:id?", (req, res) => {
