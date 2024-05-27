@@ -10,10 +10,12 @@ import {
   banner5,
   banner6,
 } from "../assets/images";
+import MultiProductCard from "../components/MultiProductCard";
 import ProductCard from "../components/ProductCard";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [multiProducts, setMultiProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -28,6 +30,20 @@ const Products = () => {
         setLoading(false);
       }
     };
+
+    const fetchMultiProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/multiProducts");
+        setMultiProducts(response.data);
+        console.log(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    fetchMultiProducts();
 
     fetchProducts();
   }, []);
@@ -60,10 +76,35 @@ const Products = () => {
           )}
         </Carousel>
       </div>
-      <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 mt-12 mx-auto">
-        {products.map((item, key) => (
-          <ProductCard key={key} product={item} />
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-center mt-12 ">
+          Top Selling Products
+        </h1>
+        <p className="text-center mt-2 text-gray-500">
+          Check out our top selling products
+        </p>
+      </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-4 mb-80">
+        {/* <MultiProductCard products={multiProducts} /> */}
+        {multiProducts.map((item, key) => (
+          <MultiProductCard key={key} products={item} />
         ))}
+      </div>
+
+      <div className="bottom-[380px] relative mt-5">
+        <div className="text-center w-full">
+          <h1 className="text-3xl font-bold text-center mt-12">
+            Trending Products
+          </h1>
+          <p className="text-center mt-2 text-gray-500">
+            Check out our trending products
+          </p>
+        </div>
+        <div className="grid  md:grid-cols-4 sm:grid-cols-2 mt-12 mx-auto">
+          {products.map((item, key) => (
+            <ProductCard key={key} product={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

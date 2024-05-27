@@ -13,7 +13,7 @@ function ProductCard({ product }) {
   // };
 
   return (
-    <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md bottom-[380px] max-sm:bottom-0 max-md:bottom-0">
+    <div className=" m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md  max-sm:bottom-0 max-md:bottom-0">
       <Link
         to="/"
         className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
