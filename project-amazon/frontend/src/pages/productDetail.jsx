@@ -254,50 +254,58 @@ import { StarIcon } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
+import {
+  shipping1,
+  shipping2,
+  shipping3,
+  shipping4,
+  shipping5,
+  shipping7,
+} from "../assets/images";
 import useCartStore from "./../../store/cartStore";
 
-const shippingDetail = [
-  {
-    id: 1,
-    name: "Free Delivery",
-    image: "shipping1",
-  },
-  {
-    id: 2,
-    name: "Pay on Delivery",
-    image: "shipping2",
-  },
-  {
-    id: 3,
-    name: "7 days Replacement",
-    image: "shipping3",
-  },
-  {
-    id: 4,
-    name: "1 Year Warranty",
-    image: "shipping4",
-  },
-  {
-    id: 5,
-    name: "Top Brand",
-    image: "shipping5",
-  },
-  {
-    id: 6,
-    name: "Amazon Delivered",
-    image: "shipping6",
-  },
-  {
-    id: 7,
-    name: "Secure transaction",
-    image: "shipping7",
-  },
-  {
-    id: 8,
-    name: "Secure transaction",
-    image: "shipping10",
-  },
-];
+// const shippingDetail = [
+//   {
+//     id: 1,
+//     name: "Free Delivery",
+//     image: { shipping1 },
+//   },
+//   {
+//     id: 2,
+//     name: "Pay on Delivery",
+//     image: { shipping2 },
+//   },
+//   {
+//     id: 3,
+//     name: "7 days Replacement",
+//     image: { shipping3 },
+//   },
+//   {
+//     id: 4,
+//     name: "1 Year Warranty",
+//     image: { shipping4 },
+//   },
+//   {
+//     id: 5,
+//     name: "Top Brand",
+//     image: { shipping5 },
+//   },
+//   {
+//     id: 6,
+//     name: "Amazon Delivered",
+//     image: { shipping6 },
+//   },
+//   {
+//     id: 7,
+//     name: "Secure transaction",
+//     image: { shipping7 },
+//   },
+//   {
+//     id: 8,
+//     name: "Secure transaction",
+//     image: { shipping8 },
+//   },
+// ];
 
 const ColorDetail = [
   {
@@ -334,7 +342,6 @@ const ColorDetail = [
 
 const ProductDetails = () => {
   const { id } = useParams();
-  console.log("ID:", id);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -366,9 +373,9 @@ const ProductDetails = () => {
 
   return (
     <div className="bg-white">
-      <main className="container mx-auto">
-        <div className="pagination py-2 text-xs font-bold">
-          <p>Sponsored Electronics › Wearable Technology › Smart Watches</p>
+      <main className="mx-auto">
+        <div className="pagination py-2 mt-3 ml-24 text-xs font-bold">
+          <p>Sponsored Electronics › Wearable Technology › {product.brand}</p>
         </div>
         <div className="ProductPaga-container py-2 px-2 flex justify-between items-start text-black text-sm leading-5">
           {/* ---------- */}
@@ -376,15 +383,15 @@ const ProductDetails = () => {
             <SmallProduct Product={ColorDetail} />
           </div>
           {/* ---------- */}
-          <div className="product-img-video w-1/3">
-            <img src={product.thumbnail} alt="" className="w-full" />
+          <div className="product-img-video w-96 mt-3 -ml-20">
+            <img src={product.thumbnail} alt="" className="w-full h-[27vw]" />
           </div>
           {/* ---------- */}
           <div className="product-detail p-4 w-2/5">
             <div className="product-detail-name border-b border-gray-300 pb-4">
               <p className="bold font-bold text-3xl">{product.brand}</p>
               <span className="product-link text-blue-700 cursor-pointer">
-                Visit the Noise Store
+                Visit the Store
               </span>
               <div className="flex items-center justify-start">
                 <span className="flex">
@@ -425,16 +432,24 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="product-detail-name py-4">
+            <div className="product-detail-name py-4 border-b border-gray-300 pb-4">
               <p className="dealBadgeSupportingText text-red-700 font-bold text-sm leading-5">
                 Ends in 03h 28m 15s
               </p>
               <p className="product-price py-4 text-3xl leading-7">
-                <sup>₹</sup>
-                {product.price}
-                <sup>00</sup>
+                <span className="text-red-500 text-md">
+                  -{product.discountPercentage}
+                </span>
+                <span className="ml-5">
+                  <sup className="">₹</sup>
+                  {product.price}
+                </span>
+                {/* <sup>00</sup> */}
               </p>
-              <div className="py-4">Inclusive of all taxes</div>
+              <p className="text-sm">
+                M.R.P.: <span className="line-through">₹11,000</span>
+              </p>
+              <div className="py-4 -mt-3 -mb-5">Inclusive of all taxes</div>
               <div>
                 <span className="bold font-bold">EMI</span> starts at ₹
                 {product.emi}. No Cost EMI available{" "}
@@ -443,7 +458,7 @@ const ProductDetails = () => {
                 </span>
               </div>
             </div>
-            <div className="product-detail-name py-4">
+            <div className="product-detail-name py-4 border-b border-gray-300 pb-4">
               <div className="flex items-center gap-1">
                 <EmiSection />
                 <EmiSection />
@@ -451,18 +466,97 @@ const ProductDetails = () => {
                 <EmiSection />
               </div>
             </div>
-            <div className="product-detail-name py-4">
+            <div className="product-detail-name py-4 border-b border-gray-300 pb-4">
+              <div className="flex items-center ml-10 text-blue-500">
+                <span className="">
+                  <img
+                    src={shipping3}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="ml-4"
+                  />
+                  <span className="justify-center flex">7 Days</span>
+                  <span className="flex">Replacement</span>
+                </span>
+                <span className="ml-7">
+                  <img
+                    src={shipping1}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="-mt-4 ml-5"
+                  />
+                  Free Delivery
+                </span>
+                <span className="ml-7 mt-1">
+                  <img
+                    src={shipping4}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="ml-6"
+                  />
+                  <span className="justify-center flex">1 Year</span>
+                  <span className="">Warranty Care</span>
+                </span>
+                <span className="ml-7">
+                  <img
+                    src={shipping2}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="-mt-4 ml-6"
+                  />
+                  Pay on Delivery
+                </span>
+                <span className="ml-7">
+                  <img
+                    src={shipping5}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="-mt-4 ml-3"
+                  />
+                  Top Brand
+                </span>
+                <span className="ml-7 mt-1">
+                  <img
+                    src={shipping7}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="ml-3"
+                  />
+                  <span className="justify-center flex">Amazon</span>
+                  <span className="ml-1">Delivered</span>
+                </span>
+              </div>
+            </div>
+            <h2 className="mt-3 text-base text-gray-900">Choose Variant :</h2>
+            <div className="product-detail-name py-4 text-xs">
               <div className="flex items-center">
-                <ShippingIcon Product={shippingDetail} />
+                <p className="peer-:bg-black peer-:text-white rounded-lg border border-black px-6 py-2 font-bold cursor-pointer">
+                  8 GB RAM + 256 GB STORAGE
+                </p>
+                <p className="rounded-lg border border-black px-6 py-2 font-bold ml-5 cursor-pointer">
+                  12 GB RAM + 512 GB STORAGE
+                </p>
+              </div>
+              <div className="flex items-center">
+                <p className="rounded-lg border border-black px-6 py-2 font-bold mt-4 cursor-pointer">
+                  8 GB RAM + 512 GB STORAGE
+                </p>
               </div>
             </div>
           </div>
+
           {/* ---------- */}
-          <div className="product-buying-detail p-4 border border-gray-400 rounded w-1/5">
+          <div className="product-buying-detail p-4 border border-gray-400 rounded w-80 h-96 mr-48">
             <p className="product-price text-3xl leading-7">
               <sup>₹</sup>
               {product.price}
-              <sup>00</sup>
+              {/* <sup>00</sup> */}
             </p>
             <p className="bold py-4">
               <span className="product-link text-blue-700 cursor-pointer">

@@ -35,7 +35,6 @@ const Products = () => {
       try {
         const response = await axios.get("http://localhost:5000/multiProducts");
         setMultiProducts(response.data);
-        console.log(response.data);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -69,22 +68,22 @@ const Products = () => {
                     alt={`Slide ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-white to-transparent"></div>
+                  <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-gray-200 to-transparent"></div>
                 </div>
               </Carousel.Item>
             )
           )}
         </Carousel>
       </div>
-      <div className="mb-8">
+      {/* <div className="mb-8">
         <h1 className="text-3xl font-bold text-center mt-12 ">
           Top Selling Products
         </h1>
         <p className="text-center mt-2 text-gray-500">
           Check out our top selling products
         </p>
-      </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-4 mb-80">
+      </div> */}
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-4 mb-80 -mt-64 z-10 px-10">
         {/* <MultiProductCard products={multiProducts} /> */}
         {multiProducts.map((item, key) => (
           <MultiProductCard key={key} products={item} />
@@ -93,14 +92,14 @@ const Products = () => {
 
       <div className="bottom-[380px] relative mt-5">
         <div className="text-center w-full">
-          <h1 className="text-3xl font-bold text-center mt-12">
+          <h1 className="text-3xl font-bold text-center mt-20">
             Trending Products
           </h1>
           <p className="text-center mt-2 text-gray-500">
             Check out our trending products
           </p>
         </div>
-        <div className="grid  md:grid-cols-4 sm:grid-cols-2 mt-12 mx-auto">
+        <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 mt-6 mx-auto">
           {products.map((item, key) => (
             <ProductCard key={key} product={item} />
           ))}
