@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../components/ui/sheet";
+import { email, name } from "../lib/utils";
 
 export function SheetDemo() {
   const navigate = useNavigate();
@@ -28,25 +29,20 @@ export function SheetDemo() {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>
-            <span className="font-montserrat">
-              Hello,{" "}
-              {localStorage.getItem("username")
-                ? localStorage.getItem("username")
-                : "user"}
-            </span>
+            <span className="font-montserrat">Hello, {name}</span>
           </SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
         <div>
           <div className="py-2">
             <h1 className="font-bold text-lg grid">Help & Settings</h1>
-            {localStorage.getItem("email") === "admin@gmail.com" ? (
+            {email === "admin@gmail.com" ? (
               <button className="flex py-2">Dashbord</button>
             ) : null}
             <button>Customer Support</button>
           </div>
         </div>
-        {!localStorage.getItem("email") && (
+        {!email && (
           <SheetFooter>
             <SheetClose asChild>
               <Button type="submit" className="flex-1">
@@ -57,13 +53,14 @@ export function SheetDemo() {
             </SheetClose>
           </SheetFooter>
         )}
-        {localStorage.getItem("email") && (
+        {email && (
           <SheetFooter>
             <SheetClose asChild>
               <Button
                 onClick={() => {
                   localStorage.clear();
                   navigate("/");
+                  window.location.reload();
                 }}
                 className="flex-1"
               >

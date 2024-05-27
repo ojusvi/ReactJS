@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { INflag, amazon, location } from "../assets/images";
 import { navLinks } from "../constants/index";
+import { name } from "../lib/utils";
 import { InputDemo } from "./Demo/InputDemo";
 import { SheetDemo } from "./SheetDemo";
 
@@ -28,10 +29,7 @@ function Nav() {
 
           <Link to="">
             <div className="ml-3 text-sm max-sm:hidden">
-              Hello{" "}
-              {localStorage.getItem("username")
-                ? localStorage.getItem("username")
-                : "user"}{" "}
+              Hello {name}
               <br />
               <span className="font-bold">Select Your Address</span>
             </div>
@@ -50,19 +48,16 @@ function Nav() {
           <span className="mx-5 max-sm:hidden">EN</span>
 
           <div className="text-xs max-sm:hidden">
-            Hello,{" "}
-            {localStorage.getItem("username")
-              ? localStorage.getItem("username")
-              : "user"}{" "}
+            Hello, {name}
             <br />
             <span className="font-bold text-sm">Account & Lists</span>
           </div>
 
-          <Link to="">
+          <Link to="/cart">
             <div className="ml-10 text-xs max-sm:hidden">
               Returns
               <br />
-              <span className="font-bold text-sm">& Orders</span>
+              <span className="font-bold text-sm">Cart</span>
             </div>
           </Link>
         </nav>
