@@ -37,7 +37,9 @@ export function SheetDemo() {
           <div className="py-2">
             <h1 className="font-bold text-lg grid">Help & Settings</h1>
             {email === "admin@gmail.com" ? (
-              <button className="flex py-2">Dashbord</button>
+              <button className="flex py-2">
+                <Link to="/dashboard">Dashbord</Link>
+              </button>
             ) : null}
             <button>Customer Support</button>
           </div>

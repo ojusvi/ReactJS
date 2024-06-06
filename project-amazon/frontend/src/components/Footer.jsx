@@ -1,4 +1,4 @@
-import { amazon } from "../assets/images";
+import { nbanimate } from "../assets/images";
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
               <div className="flex h-full flex-col justify-between">
                 <div className="mb-4 inline-flex items-center">
                   <img
-                    src={amazon}
+                    src={nbanimate}
                     alt="logo"
                     width={290}
                     height={290}
@@ -19,10 +19,10 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="mb-4  text-base font-medium text-white">
-                    amazon.in | India Ki Apni Dukaan
+                    animate.in | India Ka Apna Anime Store
                   </p>
                   <p className="text-sm text-white text-esm">
-                    &copy; 1996-2024, Amazon.com, Inc. or its affiliates
+                    &copy; 1996-2024, animate.com, Inc. or its affiliates
                   </p>
                 </div>
               </div>

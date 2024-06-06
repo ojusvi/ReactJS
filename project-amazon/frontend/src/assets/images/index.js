@@ -8,6 +8,7 @@ import banner5 from './banner5.jpg'
 import banner6 from './banner6.jpg'
 import INflag from './inflag.png'
 import location from './location.png'
+import nbanimate from './nbanimate.png'
 import shipping1 from './shipping1.png'
 import shipping10 from './shipping10.png'
 import shipping2 from './shipping2.png'
@@ -26,7 +27,7 @@ export {
     banner4,
     banner5,
     banner6,
-    location, shipping1, shipping10, shipping2,
+    location, nbanimate, shipping1, shipping10, shipping2,
     shipping3,
     shipping4,
     shipping5,
@@ -35,3 +36,4 @@ export {
     shipping8,
     shipping9
 }
+

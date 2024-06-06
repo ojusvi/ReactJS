@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { INflag, amazon, location } from "../assets/images";
+import { cart } from "../assets/icons";
+import { INflag, location, nbanimate } from "../assets/images";
 import { navLinks } from "../constants/index";
 import { name } from "../lib/utils";
 import { InputDemo } from "./Demo/InputDemo";
@@ -10,13 +11,13 @@ function Nav() {
     <>
       <header className="padding-x py-3 w-full bg-adgray text-white">
         <nav className="flex items-center max-container">
-          <Link to="/" className="mt-3">
+          <Link to="/" className="mt-1">
             <img
-              src={amazon}
+              src={nbanimate}
               alt=""
-              width={100}
+              width={120}
               height={100}
-              className="px-2 ml-5"
+              className="px-3 ml-4"
             />
           </Link>
           <img
@@ -24,7 +25,7 @@ function Nav() {
             alt=""
             width={12}
             height={12}
-            className="ml-20 mt-3.5 max-sm:hidden"
+            className="ml-14 mt-3.5 max-sm:hidden"
           />
 
           <Link to="">
@@ -53,11 +54,19 @@ function Nav() {
             <span className="font-bold text-sm">Account & Lists</span>
           </div>
 
-          <Link to="/cart">
+          <Link to="">
             <div className="ml-10 text-xs max-sm:hidden">
               Returns
               <br />
-              <span className="font-bold text-sm">Cart</span>
+              <span className="font-bold text-sm">& Orders</span>
+            </div>
+          </Link>
+
+          <img src={cart} alt="" width={35} height={35} className="mx-10" />
+
+          <Link to="/cart">
+            <div className="-ml-9 mt-2 text-sm font-bold max-sm:hidden">
+              Cart
             </div>
           </Link>
         </nav>

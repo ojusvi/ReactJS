@@ -61,6 +61,7 @@ export function SignIn() {
       localStorage.setItem("password", password);
       localStorage.setItem("username", res.data.username);
       console.log(res.data);
+      window.location.reload();
     } catch (error) {
       console.error("Error signing up:", error);
       toast(error.response.data.message);
