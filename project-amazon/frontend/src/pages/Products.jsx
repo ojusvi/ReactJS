@@ -9,6 +9,7 @@ import {
   banner4,
   banner5,
   banner6,
+  banner7,
 } from "../assets/images";
 import MultiProductCard from "../components/MultiProductCard";
 import ProductCard from "../components/ProductCard";
@@ -59,7 +60,7 @@ const Products = () => {
     <div className="flex flex-col w-full -mb-64">
       <div>
         <Carousel pause="false">
-          {[banner1, banner2, banner3, banner4, banner5, banner6].map(
+          {[banner1, banner2, banner3, banner4, banner5, banner6, banner7].map(
             (banner, index) => (
               <Carousel.Item key={index} interval={3000}>
                 <div className="relative w-full">
@@ -83,7 +84,7 @@ const Products = () => {
           Check out our top selling products
         </p>
       </div> */}
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-4 mb-80 -mt-64 z-10 px-10">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-4 mb-80 -mt-20 z-10 px-10">
         {/* <MultiProductCard products={multiProducts} /> */}
         {multiProducts.map((item, key) => (
           <MultiProductCard key={key} products={item} />

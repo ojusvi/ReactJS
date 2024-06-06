@@ -1,4 +1,3 @@
-// src/components/Dashboard.jsx
 import {
   AlertDialog,
   AlertDialogAction,
@@ -29,7 +28,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
-import { INflag, amazon, location } from "../assets/images";
+import { INflag, location, nbanimate } from "../assets/images";
 import { InputDemo } from "../components/Demo/InputDemo";
 import { dashLinks } from "../constants";
 
@@ -47,6 +46,8 @@ const Dashboard = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [productIdToDelete, setProductIdToDelete] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [productToEdit, setProductToEdit] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -81,6 +82,32 @@ const Dashboard = () => {
     }
   };
 
+  const handleEditProduct = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/products/${productToEdit.id}`,
+        newProduct
+      ); // Replace with your API endpoint
+      setProducts(
+        products.map((product) =>
+          product.id === productToEdit.id ? response.data : product
+        )
+      );
+      setNewProduct({
+        brand: "",
+        price: "",
+        rating: "",
+        thumbnail: "",
+        discountPercentage: "",
+      });
+      setIsDialogOpen(false);
+      setIsEditing(false);
+      setProductToEdit(null);
+    } catch (error) {
+      console.error("Error editing product:", error);
+    }
+  };
+
   const handleDeleteProduct = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/products/${id}`); // Replace with your API endpoint
@@ -90,13 +117,20 @@ const Dashboard = () => {
     }
   };
 
+  const openEditDialog = (product) => {
+    setIsEditing(true);
+    setProductToEdit(product);
+    setNewProduct(product);
+    setIsDialogOpen(true);
+  };
+
   return (
     <div className="">
       <header className="padding-x py-3 w-full bg-adgray text-white">
         <nav className="flex items-center max-container">
           <Link to="/" className="mt-3">
             <img
-              src={amazon}
+              src={nbanimate}
               alt=""
               width={100}
               height={100}
@@ -156,12 +190,14 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+      <h1 className="text-2xl font-bold text-center mb-4 mt-5 font-montserrat">
+        Dashboard
+      </h1>
 
       <div className="mb-6">
-        <h2 className="text-xl mb-2">Add New Product</h2>
+        <h2 className="text-xl ml-20 mb-2">Add New Product</h2>
         <button
-          className="bg-blue-500 text-white p-2"
+          className="bg-blue-500 text-white py-2.5 px-3 ml-32 rounded-md"
           onClick={() => setIsDialogOpen(true)}
         >
           Add
@@ -200,6 +236,12 @@ const Dashboard = () => {
                   </TableCell>
                   <TableCell>{product.discountPercentage}%</TableCell>
                   <TableCell>
+                    <button
+                      className="bg-yellow-500 text-white p-2 mr-2"
+                      onClick={() => openEditDialog(product)}
+                    >
+                      Edit
+                    </button>
                     <button
                       className="bg-red-500 text-white p-2"
                       onClick={() => {
@@ -248,62 +290,79 @@ const Dashboard = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent
-          className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mx-auto mt-20"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-        >
+      <Dialog
+        open={isDialogOpen}
+        onOpenChange={(open) => {
+          setIsDialogOpen(open);
+          if (!open) {
+            setIsEditing(false);
+            setNewProduct({
+              brand: "",
+              price: "",
+              rating: "",
+              thumbnail: "",
+              discountPercentage: "",
+            });
+          }
+        }}
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+      >
+        <DialogContent className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mx-auto mt-20">
           <DialogHeader>
-            <DialogTitle className="text-xl mb-4">Add New Product</DialogTitle>
+            <DialogTitle className="text-xl mb-4">
+              {isEditing ? "Edit Product" : "Add New Product"}
+            </DialogTitle>
             <DialogDescription>
-              <input
-                type="text"
-                className="border p-2 mb-2 w-full"
-                value={newProduct.brand}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, brand: e.target.value })
-                }
-                placeholder="Brand"
-              />
-              <input
-                type="number"
-                className="border p-2 mb-2 w-full"
-                value={newProduct.price}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, price: e.target.value })
-                }
-                placeholder="Price"
-              />
-              <input
-                type="number"
-                className="border p-2 mb-2 w-full"
-                value={newProduct.rating}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, rating: e.target.value })
-                }
-                placeholder="Rating"
-              />
-              <input
-                type="text"
-                className="border p-2 mb-2 w-full"
-                value={newProduct.thumbnail}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, thumbnail: e.target.value })
-                }
-                placeholder="Thumbnail URL"
-              />
-              <input
-                type="number"
-                className="border p-2 mb-2 w-full"
-                value={newProduct.discountPercentage}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    discountPercentage: e.target.value,
-                  })
-                }
-                placeholder="Discount Percentage"
-              />
+              <div>
+                <input
+                  type="text"
+                  className="border p-2 mb-2 w-full"
+                  value={newProduct.brand}
+                  onChange={(e) =>
+                    setNewProduct({ ...newProduct, brand: e.target.value })
+                  }
+                  placeholder="Brand"
+                />
+                <input
+                  type="number"
+                  className="border p-2 mb-2 w-full"
+                  value={newProduct.price}
+                  onChange={(e) =>
+                    setNewProduct({ ...newProduct, price: e.target.value })
+                  }
+                  placeholder="Price"
+                />
+                <input
+                  type="number"
+                  className="border p-2 mb-2 w-full"
+                  value={newProduct.rating}
+                  onChange={(e) =>
+                    setNewProduct({ ...newProduct, rating: e.target.value })
+                  }
+                  placeholder="Rating"
+                />
+                <input
+                  type="text"
+                  className="border p-2 mb-2 w-full"
+                  value={newProduct.thumbnail}
+                  onChange={(e) =>
+                    setNewProduct({ ...newProduct, thumbnail: e.target.value })
+                  }
+                  placeholder="Thumbnail URL"
+                />
+                <input
+                  type="number"
+                  className="border p-2 mb-2 w-full"
+                  value={newProduct.discountPercentage}
+                  onChange={(e) =>
+                    setNewProduct({
+                      ...newProduct,
+                      discountPercentage: e.target.value,
+                    })
+                  }
+                  placeholder="Discount Percentage"
+                />
+              </div>
               <div className="flex justify-end">
                 <button
                   className="bg-red-500 text-white p-2 mr-2"
@@ -313,9 +372,9 @@ const Dashboard = () => {
                 </button>
                 <button
                   className="bg-blue-500 text-white p-2"
-                  onClick={handleAddProduct}
+                  onClick={isEditing ? handleEditProduct : handleAddProduct}
                 >
-                  Add Product
+                  {isEditing ? "Update Product" : "Add Product"}
                 </button>
               </div>
             </DialogDescription>

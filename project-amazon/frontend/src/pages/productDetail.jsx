@@ -528,13 +528,13 @@ const ProductDetails = () => {
                     height={40}
                     className="ml-3"
                   />
-                  <span className="justify-center flex">Amazon</span>
+                  <span className="justify-center flex">AniMate</span>
                   <span className="ml-1">Delivered</span>
                 </span>
               </div>
             </div>
             <h2 className="mt-3 text-base text-gray-900">Choose Variant :</h2>
-            <div className="product-detail-name py-4 text-xs">
+            {/* <div className="product-detail-name py-4 text-xs">
               <div className="flex items-center">
                 <p className="peer-:bg-black peer-:text-white rounded-lg border border-black px-6 py-2 font-bold cursor-pointer">
                   8 GB RAM + 256 GB STORAGE
@@ -548,7 +548,7 @@ const ProductDetails = () => {
                   8 GB RAM + 512 GB STORAGE
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* ---------- */}
@@ -612,7 +612,7 @@ export const EmiSection = () => {
   return (
     <div className="emi-section rounded-md py-2 px-3 border border-gray-400 flex-1 my-1 shadow-sm">
       <p className="bold font-bold">No Cost EMI</p>
-      <p>Upto ₹85.51 EMI interest savings on Amazon Pay ICICI…</p>
+      <p>Upto ₹85.51 EMI interest savings on AniMate Pay ICICI…</p>
       <span className="product-link text-blue-700 cursor-pointer">
         2 offers
       </span>

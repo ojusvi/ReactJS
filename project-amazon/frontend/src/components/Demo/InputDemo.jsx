@@ -8,7 +8,7 @@ export function InputDemo() {
       <Input
         id="search"
         type="text"
-        placeholder="Search Amazon"
+        placeholder="Search AniMate"
         style={{ color: "black" }}
       />
       <Button variant="secondary" type="submit" className="bg-amber-400">

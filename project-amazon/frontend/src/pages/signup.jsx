@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { Bamazon } from "../assets/images";
+import { nbanimate } from "../assets/images";
 
 export function SignUp() {
   const [username, setUsername] = useState("");
@@ -85,7 +85,7 @@ export function SignUp() {
     <section className="">
       <div className="">
         <div className="flex items-center justify-center py-10">
-          <img src={Bamazon} alt="" width={130} height={130} />
+          <img src={nbanimate} alt="" width={130} height={130} />
         </div>
         <div className="flex justify-center items-center mx-auto">
           <div className="">
