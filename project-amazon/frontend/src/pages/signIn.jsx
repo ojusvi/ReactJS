@@ -57,6 +57,7 @@ export function SignIn() {
       toast("Sign up successful");
 
       navigate("/");
+      window.location.reload();
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
       localStorage.setItem("username", res.data.username);
