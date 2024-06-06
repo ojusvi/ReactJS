@@ -85,6 +85,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        'custom-image': "url('C:/Users/Ojusvi Wadhwa/Desktop/Desktop/ReactJS/project-amazon/frontend/src/assets/images/bgg.jpg')", // Add your custom background image here
+      },
     },
   },
   // eslint-disable-next-line no-undef
