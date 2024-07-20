@@ -22,7 +22,7 @@ export const footLinks = [
 ]
 
 export const dashLinks = [
-    { href: "#dashboard", label: "Dashboard" },
-    { href: "#manage", label: "Manage Products" },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/dashboard/manageproducts", label: "Manage Products" },
     { href: "/ticket", label: "Support Tickets" },
 ]
